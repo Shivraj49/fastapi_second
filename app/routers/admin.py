@@ -12,8 +12,8 @@ router= APIRouter(
 
 
 #! CRETAE ADMIN
-@router.post("/create", response_model=schemas.admin_out)
-def create_volunteer(admin: schemas.college_in, db: Session = Depends(get_db),):
+@router.post("/create")
+def create_admin(admin: schemas.admin_in, db: Session = Depends(get_db),):
 
     
     new_admin = models.admin_(**admin.dict())
@@ -21,4 +21,4 @@ def create_volunteer(admin: schemas.college_in, db: Session = Depends(get_db),):
     db.commit()
     db.refresh(new_admin)
 
-    return new_admin
+    return {"Status": "Successfull"}

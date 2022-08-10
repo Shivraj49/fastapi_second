@@ -15,9 +15,6 @@ class admin_in(BaseModel):
     UID : str
     password : str
     
-class admin_out(BaseModel):
-    UID : str
-    
 #!COLLEGE
 # TODO REQUEST
 class college_in(BaseModel):
