@@ -60,9 +60,9 @@ def get_current_volunteer(token: str = Depends(oauth2_scheme), db: Session = Dep
 #! COLLEGE AUTHENTICATION
 oauth2_scheme_col = OAuth2PasswordBearer(tokenUrl='login_col')
 
-SECRET_KEY = "34305tj4n4vimf"
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 60*24*182
+SECRET_KEY = settings.secret_key
+ALGORITHM = settings.algorithm
+ACCESS_TOKEN_EXPIRE_MINUTES = settings.access_token_expire_minutes
 
 
 def create_access_token_col(data: dict):
