@@ -49,3 +49,15 @@ def get_college_details(uid: str,db: Session = Depends(get_db),):
         raise HTTPException (status_code= status.HTTP_404_NOT_FOUND, detail= f"College with uid: {uid} was not Found")
     
     return college
+
+#! CREATE COLLEGE
+@router.post("/create", response_model=schemas.college_out)
+def create_volunteer(college: schemas.college_in, db: Session = Depends(get_db),):
+
+    
+    new_college = models.College_details(**college.dict())
+    db.add(new_college)
+    db.commit()
+    db.refresh(new_college)
+
+    return new_college

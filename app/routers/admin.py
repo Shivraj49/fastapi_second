@@ -9,3 +9,16 @@ router= APIRouter(
     prefix="/admin",
     tags=["admin"]
 )
+
+
+#! CRETAE ADMIN
+@router.post("/create", response_model=schemas.admin_out)
+def create_volunteer(admin: schemas.college_in, db: Session = Depends(get_db),):
+
+    
+    new_admin = models.admin_(**admin.dict())
+    db.add(new_admin)
+    db.commit()
+    db.refresh(new_admin)
+
+    return new_admin

@@ -10,10 +10,23 @@ from sqlalchemy import Column,Integer,String,TIMESTAMP,Boolean,ForeignKey
 from datetime import datetime, time
 
 #Schemas
+#!ADMIN
+class admin_in(BaseModel):
+    UID : str
+    password : str
+    
+class admin_out(BaseModel):
+    UID : str
+    
 #!COLLEGE
 # TODO REQUEST
 class college_in(BaseModel):
-    college_code: int
+    UID : str
+    college_code : int 
+    college_name : str
+    district :str
+    city :str
+    password : str
 
 # TODO RESPONSE
 class college_out(BaseModel):
@@ -23,7 +36,7 @@ class college_out(BaseModel):
     
     class Config:
         orm_mode = True
-        
+       
 #! VOLUNTTER
 # TODO REQUEST
 class volunteer_in(BaseModel):
